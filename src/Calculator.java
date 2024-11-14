@@ -4,8 +4,6 @@ import java.util.stream.IntStream;
 
 public class Calculator {
 
-    private List<History> historyList = new LinkedList<>();
-
     public double calculate(List<String> calculationFormula){
         List<Double> numbers = IntStream.range(0, calculationFormula.size())
                 .filter(i -> i % 2 == 0)

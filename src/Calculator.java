@@ -1,14 +1,10 @@
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 
 public class Calculator {
-    double originNumber;
 
-    public double getoriginNumber() {
-        return originNumber;
-    };
-
-    public double calculate(List<String> calculationFormula){
+    public double calculate(List<String> calculationFormula) {
         List<Double> numbers = IntStream.range(0, calculationFormula.size())
                 .filter(i -> i % 2 == 0)
                 .mapToObj(i -> Double.parseDouble(calculationFormula.get(i)))
@@ -19,16 +15,15 @@ public class Calculator {
                 .mapToObj(calculationFormula::get)
                 .toList();
 
-        return IntStream.range(0, operators.size())
-                .mapToObj(i -> new Object[]{numbers.get(i), numbers.get(i + 1), operators.get(i)})
-                .map(calculationArray -> {
-                    double a = (double) calculationArray[0];
-                    originNumber = a;
-                    double b = (double) calculationArray[1];
-                    String operator = (String) calculationArray[2];
-                    Operation operation = Operation.fromSymbol(operator);
-                    return operation.apply(a, b);
-                })
-                .reduce(numbers.get(0), (a, b) -> b);
+        AtomicReference<Double> result = new AtomicReference<>(numbers.get(0));
+
+        IntStream.range(0, operators.size()).forEach(i -> {
+            String operator = operators.get(i);
+            Operation operation = Operation.fromSymbol(operator);
+            double a = result.get();
+            double b = numbers.get(i + 1);
+            result.set(operation.apply(a, b));
+        });
+        return result.get();
     }
 }

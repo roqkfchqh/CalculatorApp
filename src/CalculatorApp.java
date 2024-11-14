@@ -31,7 +31,7 @@ public class CalculatorApp {
                     numbers.add(String.valueOf(b));
                     calc.calculate(numbers);
                     double result = calc.calculate(numbers);
-                    System.out.println("계산결과: " + calc.originNumber + operator + b + "=" + result);
+                    System.out.println("계산결과: " + result);
                 }
             }catch(Exception e){
                 System.out.println(e.getMessage());

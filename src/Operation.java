@@ -6,11 +6,9 @@ public enum Operation {
     MULTIPLY("*", (a, b) -> a * b),
     DIVIDE("/", (a, b) -> a / b);
 
-    //멤버 변수 선언
     private final String symbol;
     private final BiFunction<Double, Double, Double> operator;
 
-    //생성자
     Operation(String symbol, BiFunction<Double, Double, Double> operator){
         this.symbol = symbol;
         this.operator = operator;

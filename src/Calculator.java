@@ -28,10 +28,4 @@ public class Calculator {
                 })
                 .reduce(numbers.get(0), (a, b) -> b);
     }
-
-    History history = new History(firstNumber, secondNumber, operator);
-        historyList.add(history);
-
-        return result;
-}
 }

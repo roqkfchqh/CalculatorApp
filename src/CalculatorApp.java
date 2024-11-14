@@ -1,33 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CalculatorApp {
-    Parser parser = new Parser();
+
+    Calculator calc = new Calculator();
+
+    private List<String> numbers = new ArrayList<>();
 
     public void start(){
         Scanner calculation = new Scanner(System.in);
         while(true){
-            try {
-                System.out.println("첫 번째 숫자를 입력하고 엔터");
-                String firstNumber = calculation.nextLine();
-                double firstInput = Double.parseDouble(parser.parseFirstNum(firstNumber));
+            try{
+                System.out.println("첫 번째 숫자를 입력해주세요.");
+                String a = calculation.nextLine();
+                numbers.add(String.valueOf(a));
+                calc.calculate(numbers);
 
-                System.out.println("연산자(+,-,*,/)를 입력하고 엔터");
-                String operator = calculation.nextLine();
-                String operatorInput = parser.parseOperator(String.valueOf(operator));
+                while(true){
+                    System.out.println("연산자(+,-,*,/)를 입력하고 엔터(또는 c:값 초기화, e:나가기, h: 히스토리)");
+                    String operator = calculation.nextLine();
+                    if (operator.equalsIgnoreCase("e")) {
+                        Main.exit = false;
+                    } else if (operator.equalsIgnoreCase("c")) {
+                        break;
+                    }
+                    numbers.add(operator);
+                    calc.calculate(numbers);
 
-                System.out.println("두 번째 숫자를 입력하고 엔터");
-                String secondNumber = calculation.nextLine();
-                double secondInput = Double.parseDouble(parser.parseSecondNum(secondNumber));
-
-                System.out.println("계산 결과는 : " + parser.executeCalculator(firstInput, secondInput, operatorInput));
-                System.out.println("더 계산하시겠습니까? 아무 키나 입력.(exit 입력 시 종료)");
-                String input = calculation.nextLine();
-                if (input.equalsIgnoreCase("exit")) {
-                    break;
+                    System.out.println("다음 숫자를 입력하고 엔터");
+                    String b = calculation.nextLine();
+                    numbers.add(String.valueOf(b));
+                    calc.calculate(numbers);
                 }
-            } catch (BadInputException e) {
+            }catch(Exception e){
                 System.out.println(e.getMessage());
-                continue;
             }
         }
     }

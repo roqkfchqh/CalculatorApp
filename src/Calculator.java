@@ -1,8 +1,12 @@
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Calculator {
+    double originNumber;
+
+    public double getoriginNumber() {
+        return originNumber;
+    };
 
     public double calculate(List<String> calculationFormula){
         List<Double> numbers = IntStream.range(0, calculationFormula.size())
@@ -19,6 +23,7 @@ public class Calculator {
                 .mapToObj(i -> new Object[]{numbers.get(i), numbers.get(i + 1), operators.get(i)})
                 .map(calculationArray -> {
                     double a = (double) calculationArray[0];
+                    originNumber = a;
                     double b = (double) calculationArray[1];
                     String operator = (String) calculationArray[2];
                     Operation operation = Operation.fromSymbol(operator);

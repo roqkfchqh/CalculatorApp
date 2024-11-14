@@ -12,10 +12,9 @@ public class CalculatorApp {
         Scanner calculation = new Scanner(System.in);
         while(true){
             try{
-                System.out.println("첫 번째 숫자를 입력해주세요.");
+                System.out.println("첫 번째 숫자를 입력하고 엔터");
                 String a = calculation.nextLine();
                 numbers.add(String.valueOf(a));
-                calc.calculate(numbers);
 
                 while(true){
                     System.out.println("연산자(+,-,*,/)를 입력하고 엔터(또는 c:값 초기화, e:나가기, h: 히스토리)");
@@ -26,12 +25,13 @@ public class CalculatorApp {
                         break;
                     }
                     numbers.add(operator);
-                    calc.calculate(numbers);
 
                     System.out.println("다음 숫자를 입력하고 엔터");
                     String b = calculation.nextLine();
                     numbers.add(String.valueOf(b));
                     calc.calculate(numbers);
+                    double result = calc.calculate(numbers);
+                    System.out.println("계산결과: " + calc.originNumber + operator + b + "=" + result);
                 }
             }catch(Exception e){
                 System.out.println(e.getMessage());

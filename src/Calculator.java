@@ -9,8 +9,8 @@ public class Calculator {
     private List<History> historyList = new LinkedList<>();
 
     public Calculator
-    (AbstractOperation addOperation, AbstractOperation subtractOperation,
-     AbstractOperation multiplyOperation, AbstractOperation divideOperation){
+            (AbstractOperation addOperation, AbstractOperation subtractOperation,
+             AbstractOperation multiplyOperation, AbstractOperation divideOperation){
         this.addOperation = addOperation;
         this.subtractOperation = subtractOperation;
         this.multiplyOperation = multiplyOperation;

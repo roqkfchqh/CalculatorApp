@@ -33,7 +33,7 @@ public class History implements HistoryStorage{
         List<String> history = new LinkedList<>();
         history.add("First number: " + firstNumberValue);
         history.add("Second number: " + secondNumberValue);
-        history.add("Operator: " + operator);
+        history.add("Operation: " + operator);
         return history;
     }
 }

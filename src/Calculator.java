@@ -39,7 +39,10 @@ public class Calculator {
             //get 으로 Atomic 변수에 결과값 할당
             result.set(operation.apply(firstNumber, secondNumber));
             //history 저장
-            history.saveHistory(firstNumber, secondNumber, operator, result.get());
+            if(i == operators.size() - 1) {
+                history.saveHistory(firstNumber, secondNumber, operator, result.get());
+                System.out.println(operators.size() + "회 저장했소");
+            }
         });
         //현재 저장된 값 반환
         return result.get();

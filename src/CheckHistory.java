@@ -16,6 +16,7 @@ public class CheckHistory {
 
         for(HistoryData data : this.h.getHistory()){
             System.out.println(
+                    data.getIdNum() + ") " +
                     data.getFirstNumber() + " " + data.getOperator() + " " +
                     data.getSecondNumber() + " = " + data.getResult());
         }

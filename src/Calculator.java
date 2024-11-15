@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 public class Calculator {
 
     public double calculate(List<String> calculationFormula) {
+
+        System.out.println(calculationFormula);
         List<Double> numbers = IntStream.range(0, calculationFormula.size())
                 .filter(i -> i % 2 == 0)
                 .mapToObj(i -> Double.parseDouble(calculationFormula.get(i)))
@@ -25,5 +27,6 @@ public class Calculator {
             result.set(operation.apply(a, b));
         });
         return result.get();
+
     }
 }

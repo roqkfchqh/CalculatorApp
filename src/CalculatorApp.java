@@ -5,16 +5,19 @@ import java.util.Scanner;
 public class CalculatorApp {
 
     Calculator calc = new Calculator();
+    Parser parser = new Parser();
 
-    private List<String> numbers = new ArrayList<>();
+    List<String> numbers = new ArrayList<>();
 
     public void start(){
         Scanner calculation = new Scanner(System.in);
+
         while(true){
             try{
                 System.out.println("첫 번째 숫자를 입력하고 엔터");
                 String a = calculation.nextLine();
-                numbers.add(String.valueOf(a));
+                double firstInput = Double.parseDouble(parser.parseFirstNum(a));
+                numbers.add(String.valueOf(firstInput));
 
                 while(true){
                     System.out.println("연산자(+,-,*,/)를 입력하고 엔터(또는 c:값 초기화, e:나가기, h: 히스토리)");
@@ -22,19 +25,23 @@ public class CalculatorApp {
                     if (operator.equalsIgnoreCase("e")) {
                         Main.exit = false;
                     } else if (operator.equalsIgnoreCase("c")) {
+                        numbers.clear();
                         break;
                     }
-                    numbers.add(operator);
+                    String operatorInput = parser.parseOperator(operator);
+                    numbers.add(operatorInput);
 
                     System.out.println("다음 숫자를 입력하고 엔터");
                     String b = calculation.nextLine();
-                    numbers.add(String.valueOf(b));
+                    double secondInput = Double.parseDouble(parser.parseSecondNum(b));
+                    numbers.add(String.valueOf(secondInput));
                     calc.calculate(numbers);
                     double result = calc.calculate(numbers);
                     System.out.println("계산결과: " + result);
                 }
-            }catch(Exception e){
+            }catch(BadInputException e){
                 System.out.println(e.getMessage());
+                numbers.clear();
             }
         }
     }

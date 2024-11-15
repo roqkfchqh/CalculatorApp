@@ -1,6 +1,7 @@
 import java.util.function.BiFunction;
 
 public enum Operation {
+    //전달된 연산자에 따라 연산 수행
     ADD("+", (a, b) -> a + b),
     SUBTRACT("-", (a, b) -> a - b),
     MULTIPLY("*", (a, b) -> a * b),
@@ -14,16 +15,18 @@ public enum Operation {
         this.operator = operator;
     }
 
+    //숫자
     public double apply(double a, double b){
         return operator.apply(a, b);
     }
 
+    //연산자
     public static Operation fromSymbol(String symbol){
         for(Operation operation : Operation.values()){
             if(operation.symbol.equals(symbol)){
                 return operation;
             }
         }
-        throw new IllegalArgumentException(symbol + "은 사용할 수 없는 연산자입니다.");
+        throw new IllegalArgumentException();
     }
 }

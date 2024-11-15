@@ -21,6 +21,4 @@ public class CheckHistory {
                     data.getSecondNumber() + " = " + data.getResult());
         }
     }
-
-
 }

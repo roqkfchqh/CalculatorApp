@@ -15,12 +15,12 @@ public enum Operation {
         this.operator = operator;
     }
 
-    //숫자
+    //숫자 메서드
     public double apply(double a, double b){
         return operator.apply(a, b);
     }
 
-    //연산자
+    //연산자 메서드
     public static Operation fromSymbol(String symbol){
         for(Operation operation : Operation.values()){
             if(operation.symbol.equals(symbol)){

@@ -13,6 +13,7 @@ public class HistoryData {
         this.idNum = idNum;
     }
 
+    //각 데이터 불러오는 메서드
     public double getFirstNumber() {return firstNumber;}
     public double getSecondNumber() {return secondNumber;}
     public String getOperator() {return operator;}

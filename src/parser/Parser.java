@@ -1,3 +1,7 @@
+package parser;
+
+import exception.BadInputException;
+
 import java.util.regex.Pattern;
 
 public class Parser {

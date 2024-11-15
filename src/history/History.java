@@ -1,3 +1,5 @@
+package history;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class History <N extends Number, R> {
         this.history = new ArrayList<>();
     }
 
-    //계산기록 HistoryData class 에 저장
+    //계산기록 history.HistoryData class 에 저장
     public void saveHistory(N firstNumberValue, N secondNumberValue, String operator, R result){
         HistoryData data = new HistoryData(
                 firstNumberValue.doubleValue(),

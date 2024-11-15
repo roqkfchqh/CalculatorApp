@@ -1,3 +1,5 @@
+package exception;
+
 import java.lang.Exception;
 
 public class BadInputException extends Exception {

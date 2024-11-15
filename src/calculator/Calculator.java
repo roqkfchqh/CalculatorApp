@@ -1,16 +1,21 @@
+package calculator;
+
+import history.History;
+
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 
 public class Calculator {
-    //History 객체 선언
+    //history.History 객체 선언
     private History<Double, Double> history;
-    //생성자에서 History 객체 받아 초기화
+    //생성자에서 history.History 객체 받아 초기화
     public Calculator(History<Double, Double> history) {
         this.history = history;
     }
 
-    //Calculator App 의 number List 를 calculationFormula 로 명명
+    //calculator.Calculator App 의 number List 를 calculationFormula 로 명명
     public double calculate(List<String> calculationFormula) {
 
         //numbers List 에 있는 짝수번째 값 -> 숫자
@@ -34,17 +39,18 @@ public class Calculator {
             double firstNumber = result.get();
             double secondNumber = numbers.get(i + 1);
             String operator = operators.get(i);
+
             //enum 으로 숫자와 연산자를 각각 보내서 계산
             Operation operation = Operation.fromSymbol(operator);
-            //get 으로 Atomic 변수에 결과값 할당
+            //set 으로 Atomic 변수에 연산 결과값 할당
             result.set(operation.apply(firstNumber, secondNumber));
+
             //history 저장
             if(i == operators.size() - 1) {
                 history.saveHistory(firstNumber, secondNumber, operator, result.get());
-                System.out.println(operators.size() + "회 저장했소");
             }
         });
-        //현재 저장된 값 반환
+        //현재 저장된 값 cmd 반환
         return result.get();
     }
 }

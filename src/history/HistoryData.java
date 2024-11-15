@@ -1,3 +1,5 @@
+package history;
+
 public class HistoryData {
     private double firstNumber;
     private double secondNumber;

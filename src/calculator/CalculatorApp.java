@@ -14,8 +14,8 @@ public class CalculatorApp {
     private final CheckHistory check;
 
     public CalculatorApp() {
-        History<Double, Double> history = new History<>();  //history.History 객체 생성
-        calc = new Calculator(history); //calculator.Calculator 에 history.History 객체 전달
+        History<Double, Double> history = new History<>();
+        calc = new Calculator(history);
         check = new CheckHistory();
         check.setH(history);
     }

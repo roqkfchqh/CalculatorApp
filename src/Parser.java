@@ -4,20 +4,12 @@ public class Parser {
     private static final String OPERATION_REG = "[+\\-*/]";
     private static final String NUMBER_REG = "^[0-9]*$";
 
-    public String parseFirstNum(String firstInput) throws BadInputException {
-        boolean first = Pattern.matches(NUMBER_REG, firstInput);
+    public String parseNum(String number) throws BadInputException {
+        boolean first = Pattern.matches(NUMBER_REG, number);
         if(!first){
             throw new BadInputException("숫자가 아닙니다.");
         }
-        return firstInput;
-    }
-
-    public String parseSecondNum(String secondInput) throws BadInputException {
-        boolean second = Pattern.matches(NUMBER_REG, secondInput);
-        if(!second){
-            throw new BadInputException("숫자가 아닙니다.");
-        }
-        return secondInput;
+        return number;
     }
 
     public String parseOperator(String operationInput) throws BadInputException {

@@ -3,6 +3,12 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 
 public class Calculator {
+    //History 객체 선언
+    private History<Double, Double> history;
+    //생성자에서 History 객체 받아 초기화
+    public Calculator(History<Double, Double> history) {
+        this.history = history;
+    }
 
     //Calculator App 의 number List 를 calculationFormula 로 명명
     public double calculate(List<String> calculationFormula) {
@@ -25,17 +31,15 @@ public class Calculator {
 
         IntStream.range(0, operators.size()).forEach(i -> {
             //a의 값은 항상 Atomic 변수로부터 받아옴
-            double a = result.get();
-            double b = numbers.get(i + 1);
+            double firstNumber = result.get();
+            double secondNumber = numbers.get(i + 1);
             String operator = operators.get(i);
-
             //enum 으로 숫자와 연산자를 각각 보내서 계산
             Operation operation = Operation.fromSymbol(operator);
             //get 으로 Atomic 변수에 결과값 할당
-            result.set(operation.apply(a, b));
+            result.set(operation.apply(firstNumber, secondNumber));
             //history 저장
-            History<Double, Double> history = new History<>(a, b, operator, result.get());
-            history.saveHistory();
+            history.saveHistory(firstNumber, secondNumber, operator, result.get());
         });
         //현재 저장된 값 반환
         return result.get();

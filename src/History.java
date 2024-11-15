@@ -1,27 +1,30 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class History <N extends Number, R> {
     //제네릭을 사용했으나 연습용임, N과 R 둘 다 double
-    private N firstNumberValue;
-    private N secondNumberValue;
-    private String operator;
-    private R result;
-
+    private List<HistoryData> history;
     private int idNum = 1;
-    private List<String> history;
 
-    public History (N firstNumber, N secondNumber, String operator, R result){
-        this.firstNumberValue = firstNumber;
-        this.secondNumberValue = secondNumber;
-        this.operator = operator;
-        this.result = result;
-        this.history = new LinkedList<>();
+    public History(){
+        this.history = new ArrayList<>();
     }
 
-    public void saveHistory(){
-        history.add(idNum + ") " + firstNumberValue + operator + secondNumberValue + "=");
-        history.add((String) result);
+    //계산기록 저장
+    public void saveHistory(N firstNumberValue, N secondNumberValue, String operator, R result){
+        HistoryData data = new HistoryData(
+                firstNumberValue.doubleValue(),
+                secondNumberValue.doubleValue(),
+                operator,
+                ((Number) result).doubleValue(),
+                idNum
+        );
+        history.add(data);
         idNum++;
+    }
+
+    //계산기록 List 반환
+    public List<HistoryData> getHistory(){
+        return new ArrayList<>(history);
     }
 }

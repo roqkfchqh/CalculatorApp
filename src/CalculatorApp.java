@@ -3,8 +3,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CalculatorApp {
+    private History<Double, Double> history;
+    private Calculator calc;
+    private CheckHistory check;
 
-    Calculator calc = new Calculator();
+    public CalculatorApp() {
+        history = new History<>();  //History 객체 생성
+        calc = new Calculator(history); //Calculator 에 History 객체 전달
+        check = new CheckHistory();
+        check.setH(history);
+    }
     Parser parser = new Parser();
 
     //Calculator class 에 사용되는 List 생성
@@ -17,9 +25,9 @@ public class CalculatorApp {
                 System.out.println("첫 번째 숫자를 입력하고 엔터");
                 String a = calculation.nextLine();
                 //parser 로 보내서 유효성 검사
-                double firstInput = Double.parseDouble(parser.parseFirstNum(a));
+                double firstNumber = Double.parseDouble(parser.parseNum(a));
                 //BadInputException 에러가 안 떳으면 List 에 값 저장
-                numbers.add(String.valueOf(firstInput));
+                numbers.add(String.valueOf(firstNumber));
 
                 //연속 계산 while 문으로 처리
                 while(true){
@@ -32,16 +40,18 @@ public class CalculatorApp {
                     } else if (operator.equalsIgnoreCase("c")) {
                         numbers.clear();
                         break;
+                    } else if (operator.equalsIgnoreCase("h")) {
+                        check.checkHistory();
+                        continue;
                     }
                     String operatorInput = parser.parseOperator(operator);
                     numbers.add(operatorInput);
 
                     System.out.println("다음 숫자를 입력하고 엔터");
                     String b = calculation.nextLine();
-                    double secondInput = Double.parseDouble(parser.parseSecondNum(b));
-                    numbers.add(String.valueOf(secondInput));
+                    double secondNumber = Double.parseDouble(parser.parseNum(b));
+                    numbers.add(String.valueOf(secondNumber));
 
-                    calc.calculate(numbers);
                     double result = calc.calculate(numbers);
                     System.out.println("계산결과: " + result);
                 }

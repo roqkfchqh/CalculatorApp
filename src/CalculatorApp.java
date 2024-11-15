@@ -12,7 +12,6 @@ public class CalculatorApp {
 
     public void start(){
         Scanner calculation = new Scanner(System.in);
-
         while(true){
             try{
                 System.out.println("첫 번째 숫자를 입력하고 엔터");

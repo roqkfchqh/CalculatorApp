@@ -1,39 +1,27 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class History implements HistoryStorage{
+public class History <N extends Number, R> {
 
-    private double firstNumberValue;
-    private double secondNumberValue;
+    private N firstNumberValue;
+    private N secondNumberValue;
     private String operator;
+    private R result;
 
-    public History (double firstNumber, double secondNumber, String operator){
+    private int idNum = 1;
+    private List<String> history;
+
+    public History (N firstNumber, N secondNumber, String operator, R result){
         this.firstNumberValue = firstNumber;
         this.secondNumberValue = secondNumber;
         this.operator = operator;
+        this.result = result;
+        this.history = new LinkedList<>();
     }
 
-    @Override
-    public double getFirstNumberValue(){
-        return firstNumberValue;
-    }
-
-    @Override
-    public double getSecondNumberValue(){
-        return secondNumberValue;
-    }
-
-    @Override
-    public String getOperator(){
-        return operator;
-    }
-
-    @Override
-    public List<String> saveHistory(){
-        List<String> history = new LinkedList<>();
-        history.add("First number: " + firstNumberValue);
-        history.add("Second number: " + secondNumberValue);
-        history.add("Operation: " + operator);
-        return history;
+    public void saveHistory(){
+        history.add(idNum + ") " + firstNumberValue + operator + secondNumberValue + "=");
+        history.add((String) result);
+        idNum++;
     }
 }

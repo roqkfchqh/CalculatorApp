@@ -4,7 +4,6 @@ public class Parser {
     private static final String OPERATION_REG = "[+\\-*/]";
     private static final String NUMBER_REG = "^[0-9]*$";
 
-
     public String parseFirstNum(String firstInput) throws BadInputException {
         boolean first = Pattern.matches(NUMBER_REG, firstInput);
         if(!first){
@@ -12,6 +11,7 @@ public class Parser {
         }
         return firstInput;
     }
+
     public String parseSecondNum(String secondInput) throws BadInputException {
         boolean second = Pattern.matches(NUMBER_REG, secondInput);
         if(!second){
@@ -19,6 +19,7 @@ public class Parser {
         }
         return secondInput;
     }
+
     public String parseOperator(String operationInput) throws BadInputException {
         boolean operation = Pattern.matches(OPERATION_REG, operationInput);
         if(!operation){

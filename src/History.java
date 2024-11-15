@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class History <N extends Number, R> {
-
+    //제네릭을 사용했으나 연습용임, N과 R 둘 다 double
     private N firstNumberValue;
     private N secondNumberValue;
     private String operator;

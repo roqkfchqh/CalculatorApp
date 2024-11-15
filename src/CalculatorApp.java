@@ -16,16 +16,20 @@ public class CalculatorApp {
             try{
                 System.out.println("첫 번째 숫자를 입력하고 엔터");
                 String a = calculation.nextLine();
-                double firstInput = Double.parseDouble(parser.parseFirstNum(a));    //parser 로 보내서 유효성 검사
-                numbers.add(String.valueOf(firstInput));    //BadInputException 에러가 안 떳으면 List 에 값 저장
+                //parser 로 보내서 유효성 검사
+                double firstInput = Double.parseDouble(parser.parseFirstNum(a));
+                //BadInputException 에러가 안 떳으면 List 에 값 저장
+                numbers.add(String.valueOf(firstInput));
 
                 //연속 계산 while 문으로 처리
                 while(true){
                     System.out.println("연산자(+,-,*,/)를 입력하고 엔터(또는 c:값 초기화, e:나가기, h: 히스토리)");
                     String operator = calculation.nextLine();
-                    if (operator.equalsIgnoreCase("e")) {   //사용자가 e 입력 시 시스템 종료
+                    //사용자가 e 입력 시 시스템 종료
+                    if (operator.equalsIgnoreCase("e")) {
                         System.exit(0);
-                    } else if (operator.equalsIgnoreCase("c")) {    //사용자가 c 입력 시 numbers 초기화, 첫 번째 숫자부터 재시작
+                        //사용자가 c 입력 시 numbers 초기화, 첫 번째 숫자부터 재시작
+                    } else if (operator.equalsIgnoreCase("c")) {
                         numbers.clear();
                         break;
                     }

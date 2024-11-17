@@ -42,7 +42,7 @@ public class Calculator {
             //set 으로 Atomic 변수에 연산 결과값 할당
             result.set(operation.apply(firstNumber, secondNumber));
 
-            //마지막 실행에만 history 저장
+            //history 저장
             if(i == operators.size() - 1) {
                 history.saveHistory(firstNumber, secondNumber, operator, result.get());
             }

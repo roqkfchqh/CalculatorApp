@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserInput {
-    private final Scanner scanner = new Scanner(System.in);
-    private final Parser parser = new Parser();
-    private final List<String> numbers = new ArrayList<>();
+public class UserInputCalc {
+    private Scanner scanner = new Scanner(System.in);
+    private Parser parser = new Parser();
+    private List<String> numbers = new ArrayList<>();
 
     //유저 입력 받기
     double getNumbers(String prompt) throws BadInputException {

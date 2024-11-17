@@ -9,8 +9,8 @@ public enum Operation {
     MULTIPLY("*", (a, b) -> a * b),
     DIVIDE("/", (a, b) -> a / b);
 
-    private final String symbol;
-    private final BiFunction<Double, Double, Double> operator;
+    private String symbol;
+    private BiFunction<Double, Double, Double> operator;
 
     Operation(String symbol, BiFunction<Double, Double, Double> operator){
         this.symbol = symbol;

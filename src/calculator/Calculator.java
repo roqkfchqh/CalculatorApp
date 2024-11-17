@@ -3,14 +3,11 @@ package calculator;
 import history.History;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 
 public class Calculator {
-    //history.History 객체 선언
     private History<Double, Double> history;
-    //생성자에서 history.History 객체 받아 초기화
     public Calculator(History<Double, Double> history) {
         this.history = history;
     }
@@ -45,7 +42,7 @@ public class Calculator {
             //set 으로 Atomic 변수에 연산 결과값 할당
             result.set(operation.apply(firstNumber, secondNumber));
 
-            //history 저장
+            //마지막 실행에만 history 저장
             if(i == operators.size() - 1) {
                 history.saveHistory(firstNumber, secondNumber, operator, result.get());
             }

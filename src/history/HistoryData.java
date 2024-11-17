@@ -21,4 +21,8 @@ public class HistoryData {
     public String getOperator() {return operator;}
     public double getResult() {return result;}
     public int getIdNum() {return idNum;}
+
+    public String getString() {
+        return idNum + ") " + firstNumber + " " + operator + " " + secondNumber + " " + result;
+    }
 }

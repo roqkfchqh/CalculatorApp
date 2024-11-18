@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 
 public class Calculator {
-    private History<Double, Double> history;
+    private final History<Double, Double> history;
     public Calculator(History<Double, Double> history) {
         this.history = history;
     }

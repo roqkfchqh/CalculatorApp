@@ -1,11 +1,11 @@
 package history;
 
 public class HistoryData {
-    private double firstNumber;
-    private double secondNumber;
-    private String operator;
-    private double result;
-    private int idNum;
+    private final double firstNumber;
+    private final double secondNumber;
+    private final String operator;
+    private final double result;
+    private final int idNum;
 
     public HistoryData(double firstNumber, double secondNumber, String operator, double result, int idNum) {
         this.firstNumber = firstNumber;

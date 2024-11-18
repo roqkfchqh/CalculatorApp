@@ -8,22 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserInputCalc {
-    private Scanner scanner = new Scanner(System.in);
-    private Parser parser = new Parser();
-    private List<String> numbers = new ArrayList<>();
+public class CalculatorInput {
+    private final Scanner scanner = new Scanner(System.in);
+    private final Parser parser = new Parser();
+    private final List<String> numbers = new ArrayList<>();
 
     //유저 입력 받기
-    double getNumbers(String prompt) throws BadInputException {
-        System.out.println(prompt);
+    double getNumbers(String sentense) throws BadInputException {
+        System.out.println(sentense);
         String input = scanner.nextLine();
         double number = Double.parseDouble(parser.parseNum(input));
         numbers.add(String.valueOf(number));
         return number;
     }
 
-    String getOperator(String prompt) throws BadInputException {
-        System.out.println(prompt);
+    String getOperator(String sentense) throws BadInputException {
+        System.out.println(sentense);
         String input = scanner.nextLine();
 
         //특수 명령어 처리

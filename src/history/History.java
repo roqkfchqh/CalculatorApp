@@ -2,16 +2,19 @@ package history;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class History<N extends Number, R> {
     //제네릭을 사용했으나 연습용임, N과 R 둘 다 double
     public List<HistoryData> history;
 
     //계산 기록 별 고유 ID
-    private int idNum = 1;
+    private int idNum;
 
+    //초기화
     public History(){
         this.history = new ArrayList<>();
+        this.idNum = 1;
     }
 
     //계산기록 저장
@@ -30,13 +33,5 @@ public class History<N extends Number, R> {
     //전체 기록 반환
     public List<HistoryData> getHistory(){
         return new ArrayList<>(history);
-    }
-
-    //특정Id 기록 조회
-    public HistoryData getHistoryById(int id){
-        return history.stream()
-                .filter(data -> data.getIdNum() == id)
-                .findFirst()
-                .orElse(null);
     }
 }

@@ -13,7 +13,7 @@ public class CalculatorInput {
     private final Parser parser = new Parser();
     private final List<String> numbers = new ArrayList<>();
 
-    //유저 입력 받기
+    //유저 입력 받기(숫자)
     double getNumbers(String sentense) throws BadInputException {
         System.out.println(sentense);
         String input = scanner.nextLine();
@@ -22,6 +22,7 @@ public class CalculatorInput {
         return number;
     }
 
+    //유저 입력 받기(연산자)
     String getOperator(String sentense) throws BadInputException {
         System.out.println(sentense);
         String input = scanner.nextLine();
@@ -42,7 +43,7 @@ public class CalculatorInput {
         return operator;
     }
 
-    //리스트 반환
+    //유저 입력 리스트 반환(Calculator 에서 필요)
     public List<String> getNumbers() {
         return new ArrayList<>(numbers);
     }

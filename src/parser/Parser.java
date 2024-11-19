@@ -5,8 +5,10 @@ import exception.BadInputException;
 import java.util.regex.Pattern;
 
 public class Parser {
-    private static final String OPERATION_REG = "[+\\-*/]";
-    private static final String NUMBER_REG = "^[0-9]*$";
+    //+, -, *, /, ^ 외에는 예외 처리
+    private static final String OPERATION_REG = "[+\\-*/^]";
+    //음수 포함 숫자 가능
+    private static final String NUMBER_REG = "^-?[0-9]+$";
 
     public String parseNum(String number) throws BadInputException {
         boolean first = Pattern.matches(NUMBER_REG, number);

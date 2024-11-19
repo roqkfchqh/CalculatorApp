@@ -23,6 +23,6 @@ public class HistoryData {
     public int getIdNum() {return idNum;}
 
     public String getString() {
-        return idNum + ") " + firstNumber + " " + operator + " " + secondNumber + " " + result;
+        return idNum + ") " + firstNumber + " " + operator + " " + secondNumber + "=" + result;
     }
 }

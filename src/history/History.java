@@ -11,7 +11,6 @@ public class History<N extends Number, R> {
     //계산 기록 별 고유 ID
     private int idNum;
 
-    //초기화
     public History(){
         this.history = new ArrayList<>();
         this.idNum = 1;

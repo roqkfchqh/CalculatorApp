@@ -22,7 +22,8 @@ public class CalculatorApp {
                 double firstNumber = calculatorInput.getNumbers("첫 번째 숫자를 입력해주세요.");
                 //연속 계산 while 문으로 처리
                 while(true){
-                    String operator = calculatorInput.getOperator("연산자(+,-,*,/)를 입력하고 엔터 (c: 초기화, h: 히스토리, e: 종료)");
+                    System.out.println("\uD83D\uDCA1더하기, 빼기, 곱하기, 나누기, 거듭제곱 가능\uD83D\uDCA1");
+                    String operator = calculatorInput.getOperator("연산자(+,-,*,/,^)를 입력하고 엔터 (c: 초기화, h: 히스토리, e: 종료)");
                     if (operator.equalsIgnoreCase("h")) {
                         historyInteraction.showHistory();
                         break;
@@ -37,7 +38,7 @@ public class CalculatorApp {
                     }
 
                     double result = calc.calculate(calculatorInput.getNumbers());
-                    System.out.println("계산결과: " + result);
+                    System.out.println("✨계산결과: " + result);
                 }
             }catch(BadInputException e){
                 //에러 발생 시 List 초기화
